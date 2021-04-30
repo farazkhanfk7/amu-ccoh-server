@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Upload Files</title>
+{% endblock title %}
+
+{% block content %}
+ <!-- bradcam_area  -->
+ <div class="bradcam_area" style="background-image: url('{% static 'img/banner/notes.jpeg' %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Class Notes</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-5">
+<div class="container card text-center p-4 col-5">
+<div class="m-3">
+<h3 class="m-3">Upload Class Notes</h3>
+{% if messages %}
+{% for message in messages %}
+<p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message | escape }}</p>
+{% endfor %}
+{% endif %}
+</div>
+<form action="uploadfile" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="boxed-btn3 wow" type="submit">
+</form>
+</div>
+</div>
+
+{% endblock content %}
