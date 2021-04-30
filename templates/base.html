@@ -29,7 +29,6 @@
 </head>
 
 <body>
-  
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -37,7 +36,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
                             </div>
@@ -51,14 +50,8 @@
                                         <li><a href="#">Contact Us</a></li>
                                         {% if user.is_authenticated %}
                                         <!-- <button class="boxed-btn3 wow fadeInUp">You're logged in as {{user.username}} !</button> -->
-                                        {%if user.socialaccount_set.all.0.get_avatar_url%}
-                                        <a class="boxed-btn3 wow fadeInUp" href="#" role="button">You're {{user.username}} <img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" height="30" alt="USA flag"></a>
-                                        {% else %}
                                         <a class="boxed-btn3 wow fadeInUp" href="#" role="button">You're {{user.username}} </a>
-                                        {% endif %}
                                         <!-- <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" /> -->
-                                        {% else %}
-                                        <a href="/accounts/login" class="boxed-btn3 wow fadeInUp">Teacher Login</a>
                                         {% endif %}
                                         {% if user.is_authenticated %}
                                         <a href="/accounts/logout" class="ml-1 boxed-btn3 wow fadeInUp">Log Out</a>
@@ -93,6 +86,7 @@
                         <div class="menu_links">
                             <ul>
                                 <li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".2s" href="#"></a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
+                                <li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".2s" href="#"></a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
                                 <li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".4s" href="#">Home</a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
                                 <li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".6s" href="#">About</a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
                                 <li><a class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".6s" href="#">Contact Us</a class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s"></li>
@@ -119,7 +113,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
                             <!--  -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | AMU Notes |</a><a class="wow fadeInUp" style="color: rgb(255, 255, 255);" href="https://www.github.com/farazkhanfk7/amunotes" target="_blank"> Github</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | AMU CCOH |</a><a class="wow fadeInUp" style="color: rgb(255, 255, 255);" href="https://www.github.com/farazkhanfk7/amunotes" target="_blank"> Github</a>
 <!--  -->
                         </p>
                     </div>

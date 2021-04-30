@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 from django.utils import timezone
+from django.shortcuts import reverse
+from django.utils.text import slugify
 from multiselectfield import MultiSelectField
 
 # Create your models here.
@@ -27,7 +29,7 @@ class Hospital(models.Model):
     contact = models.CharField(max_length=30, blank=True, default='')
     other_contact = models.CharField(max_length=30, blank=True, default='')
     availablity = models.CharField(choices=BOOL_CHOICES, max_length=10)
-    tags = MultiSelectField(choices=TAGS)
+    tags = MultiSelectField(choices=TAGS,blank=True,null=True)
     remarks = models.TextField(blank=True)
     created_on = models.DateTimeField(default=datetime.now())
     last_updated = models.DateTimeField(default=datetime.now())
@@ -39,6 +41,20 @@ class Hospital(models.Model):
         self.last_updated = datetime.now()
         super(Hospital, self).save()
 
+    def get_absolute_url(self):
+        return reverse("hospital-detail", kwargs={
+            'pk': self.pk
+        })
+
+    def get_edit_url(self):
+        return reverse("hospital-edit", kwargs={
+            'pk': self.pk
+        })
+
+    def get_delete_url(self):
+        return reverse("hospital-delete", kwargs={
+            'pk': self.pk
+        })
 
 class OxygenSupplier(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')

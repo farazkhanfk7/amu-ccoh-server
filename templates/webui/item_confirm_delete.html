@@ -1,0 +1,41 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+<!--Did this because title keyword was already used for some other purpose-->
+<!-- it shows a weird yellow line -->
+{% block titlename%}Delete Item{% endblock titlename%}
+
+{% block content %}
+<!-- bradcam_area  -->
+<div class="bradcam_area" style="background-image: url('{% static 'img/banner/notes.jpeg' %}');">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>{% trans "Delete" %}</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="m-5">
+  <div class="container card text-center p-4 col-8">
+<h1>{% trans "Delete Item" %}</h1>
+
+<p>Are you want to delete {{object.name}} ?</p>
+
+<form method="post">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="boxed-btn3 wow" type="submit">{% trans 'Delete' %}</button>
+  <a href="{{object.get_absolute_url}}" class="boxed-btn3 wow" >{% trans 'Cancel' %}</a>
+</form>
+</div>
+</div>
+
+{% endblock %}

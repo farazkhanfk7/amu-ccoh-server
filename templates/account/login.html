@@ -1,0 +1,61 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+<!--Did this because title keyword was already used for some other purpose-->
+<!-- it shows a weird yellow line -->
+{% block titlename%}Login{% endblock titlename%}
+
+{% block content %}
+<!-- bradcam_area  -->
+<div class="bradcam_area" style="background-image: url('{% static 'img/banner/notes.jpeg' %}');">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="bradcam_text">
+                  <h3>{% trans "Sign In" %}</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="m-5">
+<div class="container card text-center p-4 col-8">
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<p>{% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below :{% endblocktrans %}</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    <img class="rounded-circle" src="https://img.techpowerup.org/201002/download610.png" height="40" alt="USA flag"> <div class="font-weight-bold">{% include "socialaccount/snippets/provider_list.html" with process="login" %}</div>
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<h3>Login Here</h3>
+{% endif %}
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="boxed-btn3 wow" type="submit">{% trans "Sign In" %}</button>
+  <br>
+  <br>
+</form>
+</div>
+</div>
+
+{% endblock content %}

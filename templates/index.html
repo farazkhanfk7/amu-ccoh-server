@@ -2,7 +2,7 @@
 {% load static %}
 
     {% block title %}
-    <title>AMU Notes</title>
+    <title>AMU CCOH</title>
     {% endblock title %}
     
     {% block content %} 
@@ -13,13 +13,14 @@
                     <div class="col-lg-10 col-md-10">
                         <div class="slider_text">
                             <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-                                Download your classs and many other resources easily.
+                                One place to manage health-related updates and resources.
                             </h3>
-                            <a href="/facultylist" class="boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Select Faculty</a>
-                            <a href="/search_class" class="ml-3 mr-5 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Search Classes</a>
                             {% if user.is_authenticated %}
-                            <a href="/uploadfile" class="ml-5 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Upload Files</a>
-                            <a href="/updateclass" class="ml-3 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Update Classes</a>
+                            <a href="/hospitals" class="ml-5 p-3 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Hospitals</a>
+                            <a href="/updateclass" class="ml-3 p-3 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Oxygen Suppliers</a>
+                            <a href="/updateclass" class="ml-3 p-3 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Pharmacy</a>
+                            {% else %}
+                            <a href="/accounts/login" class="boxed-btn3 px-5 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Login</a>
                             {% endif %}
                         </div>
                     </div>
@@ -38,35 +39,6 @@
                         <span class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s" style="font-size:30px;">Services</span>
                         <h3 class="wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".2s"  > You can also contribute to the community by providing us useful study material.
                              </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service text-center wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay=".4s">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
-                        </div>
-                        <h3>Last year papers</h3>
-                        <p>Here we provide you last year/semester exam and sessional papers.</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
-                        </div>
-                        <h3>Class Notes</h3>
-                        <p> Here we provide you the class notes and other stuffs..<br><br></p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service text-center wow fadeInRight" data-wow-duration="1.2s" data-wow-delay=".4s">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
-                        </div>
-                        <h3>Other Resources</h3>
-                        <p> Here we provide some other resources like recommended books<br>syllabus and much more..</p>
                     </div>
                 </div>
             </div>

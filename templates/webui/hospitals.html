@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block title %}
+    <title>{{department.name}} Department</title>
+    {% endblock title %}
+    
+    {% block content %}
+     <!-- bradcam_area  -->
+     <div class="bradcam_area breadcam_bg_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{department.name}} Department</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /bradcam_area  -->
+
+    <!-- portfolio_image_area  -->
+    <!--
+    <div class="portfolio_image_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb-90">
+                        <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Featured Works</h3>
+                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">Tour function information without cross action media value quickly maximize timely deliverables.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/1.png" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/2.jpg" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-lg-4">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/3.png" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-lg-4">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/4.png" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-lg-4">
+                    <div class="single_Portfolio wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
+                        <div class="portfolio_thumb">
+                            <img src="img/portfolio/5.png" alt="">
+                        </div>
+                        <div class="portfolio_hover">
+                            <div class="title">
+                                <span>App Design</span>
+                                    <h3>Colorlib Mobile App</h3>
+                                    <a class="boxed-btn3" href="portfolio_details.html">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- portfolio_image_area  -->
+
+
+    <!-- testimonial_area  -->
+    <div style="width:70%; margin: auto;">
+        <br>
+        <br>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bolder; text-align: center;">All Subjects</h1>
+        <br>
+        {% for hospital in object_list %}
+        <div class="card">
+            <div class="card-body">
+              <h1>{{hospital.name}}</h1>
+              <h5 class="card-title">{{hospital.address}}</h5>
+              <p class="card-text">{{hospital.remark}}</p>
+              <a href="{% url 'hospital-detail' hospital.id %}" class="btn btn-secondary">View</a>
+              <a href="{{hospital.get_edit_url}}" class="btn btn-info">Edit</a>
+              <a href="{{hospital.get_delete_url}}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        <br>    
+    </div>
+    <div class="testimonial_area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_carousel">
+                                <div class="single_testmonial text-center">
+                                        <div class="quote">
+                                            <img src="{% static 'img/testmonial/quote.svg' %}" alt="">
+                                        </div>
+                                        <p>The first requisite for the progress of a nation is the brotherhood and unity amongst sections of the society. </p>
+                                        <div class="testmonial_author">
+                                            <div class="thumb">
+                                                    <img src="{% static 'img/testmonial/thumb.png' %}" alt="">
+                                            </div>
+                                            <h3>Sir Syed Ahmad Khan</h3>
+                                            <span>Founder, Aligarh Muslim University</span>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="single_carousel">
+                                <div class="single_testmonial text-center">
+                                        <div class="quote">
+                                            <img src="{% static 'img/testmonial/quote.svg' %}" alt="">
+                                        </div>
+                                        <p>When a nation becomes devoid of arts and learning, it invites poverty. And when poverty comes, it brings in its wake thousands of crimes.</p>
+                                        <div class="testmonial_author">
+                                            <div class="thumb">
+                                                    <img src="{% static 'img/testmonial/thumb.png' %}" alt="">
+                                            </div>
+                                            <h3>Sir Syed Ahmad Khan</h3>
+                                            <span>Founder, Aligarh Muslim University</span>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testimonial_area  -->
+
+    <div class="get_in_tauch_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb-90">
+                        <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Help us to expand more</h3>
+                        <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">At this moment we're limited by the accessiblity to study materials of different courses. And thus we're asking you to help us by giving your suggestions and providing study materials of your respective courses. Send your content or contact us on our mail account.</p>
+                        <br>
+                        <a class="boxed-btn3 wow fadeInLeft"  data-wow-duration="1s" data-wow-delay=".2s" href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer start -->
+    {% endblock content %}
