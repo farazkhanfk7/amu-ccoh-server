@@ -74,3 +74,17 @@ class OxygenSupplier(models.Model):
         self.last_updated = datetime.now()
         super(OxygenSupplier, self).save()
     
+    def get_absolute_url(self):
+        return reverse("oxygen-detail", kwargs={
+            'pk': self.pk
+        })
+
+    def get_edit_url(self):
+        return reverse("oxygen-edit", kwargs={
+            'pk': self.pk
+        })
+
+    def get_delete_url(self):
+        return reverse("oxygen-delete", kwargs={
+            'pk': self.pk
+        })
