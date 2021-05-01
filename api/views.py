@@ -105,3 +105,4 @@ class OxygenFilterList(APIView):
         oxygen = self.get_objects(filter_)
         serializer = OxygenSerializer(oxygen, many=True)
         return Response(serializer.data)
+

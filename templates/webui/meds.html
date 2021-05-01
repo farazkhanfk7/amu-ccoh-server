@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block title %}
+    <title>Pharmacies</title>
+    {% endblock title %}
+    
+    {% block content %}
+     <!-- bradcam_area  -->
+     <div class="bradcam_area breadcam_bg_2">
+        <div class="container">
+            <div class="row align-items-center justify-content-start">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Pharmacies</h3>
+                        <a href="/meds/new" class="p-3 px-5 boxed-btn3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".7s">Add new</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /bradcam_area  -->
+
+    <div style="width:70%; margin: auto;">
+        <br>
+        <br>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bolder; text-align: center;">List</h1>
+        <br>
+        {% for item in object_list %}
+        <div class="card my-2">
+            <div class="card-body">
+              <h1>{{item.name}}</h1>
+              <h5 class="card-title">{{item.address}}</h5>
+              <p class="card-text">{{item.remark}}</p>
+              <a href="{% url 'meds-detail' item.id %}" class="btn btn-secondary">View</a>
+              <a href="{{item.get_edit_url}}" class="btn btn-info">Edit</a>
+              <a href="{{item.get_delete_url}}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        <br>    
+    </div>
+    <!-- footer start -->
+    {% endblock content %}

@@ -23,6 +23,12 @@ TAGS = [
     ('VENTILATOR','VENTILATOR')
 ]
 
+MED_TAGS = [
+    ('Oximeter', 'Pulse Oximeter'),
+    ('Remdesivir','Remdesivir'),
+    ('Nebulizer','Nebulizer')
+]
+
 class Hospital(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     address = models.CharField(max_length=200, blank=True, default='')
@@ -86,5 +92,38 @@ class OxygenSupplier(models.Model):
 
     def get_delete_url(self):
         return reverse("oxygen-delete", kwargs={
+            'pk': self.pk
+        })
+
+class Med(models.Model):
+    name = models.CharField(max_length=100, blank=True, default='')
+    address = models.CharField(max_length=200, blank=True, default='')
+    contact = models.CharField(max_length=30, blank=True, default='')
+    other_contact = models.CharField(max_length=30, blank=True, default='')
+    availablity = models.CharField(choices=BOOL_CHOICES, max_length=10)
+    tags = MultiSelectField(choices=MED_TAGS,blank=True,null=True)
+    remarks = models.TextField(blank=True)
+    created_on = models.DateTimeField(default=datetime.now())
+    last_updated = models.DateTimeField(default=datetime.now())
+
+    def __str__(self):
+        return f"{self.name}"
+    
+    def save(self):
+        self.last_updated = datetime.now()
+        super(Med, self).save()
+
+    def get_absolute_url(self):
+        return reverse("meds-detail", kwargs={
+            'pk': self.pk
+        })
+
+    def get_edit_url(self):
+        return reverse("meds-edit", kwargs={
+            'pk': self.pk
+        })
+
+    def get_delete_url(self):
+        return reverse("meds-delete", kwargs={
             'pk': self.pk
         })

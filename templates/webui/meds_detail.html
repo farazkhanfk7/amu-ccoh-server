@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block title %}
+    <title>Pharmacies</title>
+    {% endblock title %}
+    
+    {% block content %}
+     <!-- bradcam_area  -->
+     <div class="bradcam_area breadcam_bg_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Pharmacies</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- testimonial_area  -->
+    <div style="width:70%; margin: auto;">
+        <br>
+        <br>
+        <br>
+        <div class="card">
+            <div class="card-header">
+              <h1>{{object.name}}</h1>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{object.address}}</h5>
+                <h5 class="card-title"> Contact : {{object.contact}}</h5>
+                <h5 class="card-title"> Other Contact : {{object.other_contact}}</h5>
+                <h5 class="card-text">Availablity: {{object.availablity}}</h5>
+                <p class="card-text">Remarks: {{object.remarks}}</p>
+                Tags:
+                {%for tag in object.tags%}
+                <span class="badge badge-info">{{tag}}</span>
+                {%endfor%}
+                <p class="card-text">Last updated on: {{object.last_updated}}</p>
+              <a href="{{object.get_edit_url}}" class="btn btn-info">Edit</a>
+              <a href="{{object.get_delete_url}}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+
+        <br>    
+    </div>
+    <!-- footer start -->
+    {% endblock content %}

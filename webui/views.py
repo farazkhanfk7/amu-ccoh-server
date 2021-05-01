@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from api.models import Hospital, OxygenSupplier
+from api.models import Hospital, OxygenSupplier, Med
 
 # Create your views here.
 
@@ -59,3 +59,26 @@ class OxygenDeleteView(LoginRequiredMixin, DeleteView):
     success_url ='/oxygen'
     template_name = "webui/item_confirm_delete.html"
 
+class MedsView(LoginRequiredMixin, ListView):
+    model = Med
+    template_name = "webui/meds.html"
+    ordering = ['-last_updated']
+
+class MedsDetailView(LoginRequiredMixin, DetailView):
+    model = Med
+    template_name = "webui/meds_detail.html"
+
+class MedsCreateView(LoginRequiredMixin, CreateView):
+    model = Med
+    fields = ['name','address','contact','other_contact','availablity','tags','remarks']
+    template_name = "webui/meds_form.html"
+
+class MedsUpdateView(LoginRequiredMixin, UpdateView):
+    model = Med
+    fields = ['name','address','contact','other_contact','availablity','tags','remarks']
+    template_name = "webui/meds_form.html"
+
+class MedsDeleteView(LoginRequiredMixin, DeleteView):
+    model = Med
+    success_url ='/meds'
+    template_name = "webui/item_confirm_delete.html"
