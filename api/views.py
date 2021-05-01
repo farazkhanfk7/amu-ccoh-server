@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from .models import Hospital, OxygenSupplier
-from .serializers import UserSerializer, HospitalSerializer, OxygenSerializer
+from .models import Hospital, OxygenSupplier, Med, Notice
+from .serializers import (UserSerializer, HospitalSerializer,
+                          OxygenSerializer, MedSerializer, NoticeSerializer)
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -53,9 +54,9 @@ class HospitalAvailableList(APIView):
 
 
 @permission_classes((permissions.AllowAny,)) # This decorator to be used with APIView
-class OxygenList(APIView):
+class OxygenAvailableList(APIView):
     """
-    List of all OxygenSuppliers
+    List of all Available OxygenSuppliers
     """
 
     def get_objects(self):
@@ -72,7 +73,7 @@ class OxygenList(APIView):
 
 
 @permission_classes((permissions.AllowAny,)) # This decorator to be used with APIView
-class OxygenAvailableList(APIView):
+class OxygenList(APIView):
     """
     List of all Available OxygenSuppliers
     """
@@ -106,3 +107,24 @@ class OxygenFilterList(APIView):
         serializer = OxygenSerializer(oxygen, many=True)
         return Response(serializer.data)
 
+@permission_classes((permissions.AllowAny,)) # This decorator to be used with APIView
+class MedList(APIView):
+    """
+    List of all Pharmacy Stores
+    """
+
+    def get(self, request, format=None):
+        instance = Med.objects.all().order_by('-last_updated')
+        serializer = MedSerializer(instance, many=True)
+        return Response(serializer.data)
+
+@permission_classes((permissions.AllowAny,)) # This decorator to be used with APIView
+class NoticeList(APIView):
+    """
+    List of all Notices and Updates
+    """
+
+    def get(self, request, format=None):
+        instance = Notice.objects.all().order_by('-last_updated')
+        serializer = NoticeSerializer(instance, many=True)
+        return Response(serializer.data)
