@@ -8,6 +8,7 @@
     {% block title %}
     {% endblock title %}
     <title>{% block titlename%}{% endblock titlename%}</title>
+    <link rel='shortcut icon' type='image/x-icon' href="{% static 'img/favicon.ico' %}">
     <!-- the above titlename was used because title is preused keyword in allauth files -->
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,7 +78,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2 col-md-3">
                         <div class="footer_logo wow fadeInRight" data-wow-duration="1s" data-wow-delay=".3s">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="{% static 'img/logo.png' %}" alt="">
                             </a>
                         </div>
@@ -113,7 +114,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
                             <!--  -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | AMU CCOH |</a><a class="wow fadeInUp" style="color: rgb(255, 255, 255);" href="https://www.github.com/farazkhanfk7/amunotes" target="_blank"> Github</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | AMU CCOH </a>
 <!--  -->
                         </p>
                     </div>

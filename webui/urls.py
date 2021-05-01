@@ -5,7 +5,8 @@ from .views import (HospitalView,HospitalDetailView,HospitalCreateView,
                     HospitalUpdateView,HospitalDeleteView,OxygenView,
                     OxygenDetailView,OxygenCreateView,OxygenUpdateView,
                     OxygenDeleteView,MedsView,MedsDetailView,MedsCreateView,
-                    MedsUpdateView,MedsDeleteView)
+                    MedsUpdateView,MedsDeleteView,NoticeView,NoticeCreateView,
+                    NoticeUpdateView,NoticeDeleteView)
 
 urlpatterns = [
     path('',views.home,name="home"),
@@ -24,4 +25,8 @@ urlpatterns = [
     path('meds/<int:pk>/',MedsDetailView.as_view(),name="meds-detail"),
     path('meds/<int:pk>/edit/',MedsUpdateView.as_view(),name="meds-edit"),
     path('meds/<int:pk>/delete/',MedsDeleteView.as_view(),name="meds-delete"),
+    path('notice/',NoticeView.as_view(),name="notice"),
+    path('notice/new/',NoticeCreateView.as_view(),name='notice-create'),
+    path('notice/<int:pk>/edit/',NoticeUpdateView.as_view(),name="notice-edit"),
+    path('notice/<int:pk>/delete/',NoticeDeleteView.as_view(),name="notice-delete"),
 ]

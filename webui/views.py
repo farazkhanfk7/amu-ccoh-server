@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from api.models import Hospital, OxygenSupplier, Med
+from api.models import Hospital, OxygenSupplier, Med, Notice
 
 # Create your views here.
 
@@ -59,6 +59,8 @@ class OxygenDeleteView(LoginRequiredMixin, DeleteView):
     success_url ='/oxygen'
     template_name = "webui/item_confirm_delete.html"
 
+# Pharmacy
+
 class MedsView(LoginRequiredMixin, ListView):
     model = Med
     template_name = "webui/meds.html"
@@ -81,4 +83,26 @@ class MedsUpdateView(LoginRequiredMixin, UpdateView):
 class MedsDeleteView(LoginRequiredMixin, DeleteView):
     model = Med
     success_url ='/meds'
+    template_name = "webui/item_confirm_delete.html"
+
+# Help Desk
+
+class NoticeView(LoginRequiredMixin, ListView):
+    model = Notice
+    template_name = "webui/notice.html"
+    ordering = ['-last_updated']
+
+class NoticeCreateView(LoginRequiredMixin, CreateView):
+    model = Notice
+    fields = ['title','remarks','link']
+    template_name = "webui/notice_form.html"
+
+class NoticeUpdateView(LoginRequiredMixin, UpdateView):
+    model = Notice
+    fields = ['title','remarks','link']
+    template_name = "webui/notice_form.html"
+
+class NoticeDeleteView(LoginRequiredMixin, DeleteView):
+    model = Notice
+    success_url ='/notice'
     template_name = "webui/item_confirm_delete.html"

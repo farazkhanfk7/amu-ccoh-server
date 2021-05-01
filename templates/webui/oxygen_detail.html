@@ -118,9 +118,13 @@
               <h1>{{object.name}}</h1>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{object.address}}</h5>
-              <h5 class="card-title"> Contact : {{object.contact}}</h5>
-              <p class="card-text">{{object.remarks}}</p>
+                <h5 class="card-title">{{object.address}}</h5>
+                <h5 class="card-title"> Contact : {{object.contact}}</h5>
+                <h5 class="card-title"> Other Contact : {{object.other_contact}}</h5>
+                <h5 class="card-text">Availablity: {{object.availablity}}</h5>
+                <h5 class="card-text">Seller or Filling: {{object.type_is}}</h5>
+                <p class="card-text">Remarks: {{object.remarks}}</p>
+                <p class="card-text">Last updated on: {{object.last_updated}}</p>
               <a href="{{object.get_edit_url}}" class="btn btn-info">Edit</a>
               <a href="{{object.get_delete_url}}" class="btn btn-danger">Delete</a>
             </div>

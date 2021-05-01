@@ -127,3 +127,31 @@ class Med(models.Model):
         return reverse("meds-delete", kwargs={
             'pk': self.pk
         })
+
+
+class Notice(models.Model):
+    title = models.CharField(max_length=300, blank=True, default='')
+    link = models.CharField(max_length=300, blank=True, default='')
+    remarks = models.TextField(blank=True)
+    created_on = models.DateTimeField(default=datetime.now())
+    last_updated = models.DateTimeField(default=datetime.now())
+
+    def __str__(self):
+        return f"{self.title}"
+    
+    def save(self):
+        self.last_updated = datetime.now()
+        super(Notice, self).save()
+
+    def get_absolute_url(self):
+        return reverse("notice", kwargs={})
+
+    def get_edit_url(self):
+        return reverse("notice-edit", kwargs={
+            'pk': self.pk
+        })
+
+    def get_delete_url(self):
+        return reverse("notice-delete", kwargs={
+            'pk': self.pk
+        })
